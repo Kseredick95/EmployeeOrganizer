@@ -1,0 +1,19 @@
+{
+  "name": "employeeorganizer",
+  "version": "1.0.0",
+  "description": "organize employees, departments and roles.",
+  "main": "CRUDemployee.js",
+  "scripts": {
+    "test": "node CRUDemployee.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kseredick95/EmployeeOrganizer.git"
+  },
+  "author": "kseredick95",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kseredick95/EmployeeOrganizer/issues"
+  },
+  "homepage": "https://github.com/Kseredick95/EmployeeOrganizer#readme"
+}
