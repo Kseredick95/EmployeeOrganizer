@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/Kseredick95/EmployeeOrganizer.git"
   },
+  "scripts": {
+    "start": "node CRUDemployee.js"
+  }
   "author": "kseredick95",
   "license": "ISC",
   "bugs": {
