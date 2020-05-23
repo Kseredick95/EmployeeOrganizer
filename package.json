@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node CRUDemployee.js"
-  }
+  },
   "author": "kseredick95",
   "license": "ISC",
   "bugs": {
