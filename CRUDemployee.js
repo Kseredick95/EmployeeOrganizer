@@ -1,6 +1,5 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer")
-const async = require("async")
 
 const connection = mysql.createConnection({
     host: "localhost",
@@ -16,12 +15,13 @@ connection.connect(function (err) {
     startNext();
 });
 
+//User chooses action
 function startNext() {
     inquirer.prompt([
         {
             type: "list",
             name: "choice",
-            choices: ["Add new department.", "Add new roles.", "Add new employee.", "View all employees.", "View employees by department.", "View employees by role.", "Update employee.", "QUIT"],
+            choices: ["Add new department.", "Add new roles.", "Add new employee.", "View all employees.", "View departments.", "View roles.", "Update employee.", "QUIT"],
             message: "What action would you like to perform?"
         }
     ]).then(function (data) {
@@ -42,20 +42,12 @@ function startNext() {
                 viewAll();
                 break;
 
-            case "View employees by department.":
+            case "View departments.":
                 viewDept();
                 break;
 
-            case "View employees by role.":
+            case "View roles.":
                 viewRole();
-                break;
-
-            case "Update department.":
-                updateDept();
-                break;
-
-            case "Update roles.":
-                updateRole();
                 break;
 
             case "Update employee.":
@@ -69,6 +61,7 @@ function startNext() {
     })
 }
 
+//Add functions
 function addDepartment() {
     inquirer.prompt([
         {
@@ -148,7 +141,6 @@ function addRole() {
     })
 }
 
-//Need to have a way to select roles and departments --FIX ME
 function addEmployee() {
     connection.query("SELECT * FROM roles", function (err, res) {
         if (err) throw err;
@@ -275,5 +267,36 @@ function updateEmployee() {
                 startNext();
             })
         })
+    })
+}
+
+//View functions
+function viewAll() {
+    connection.query("SELECT * FROM employee", function (err, res) {
+        if (err) throw err;
+
+        console.table(res);
+
+        startNext();
+    })
+}
+
+function viewDept() {
+    connection.query("SELECT * FROM department", function (err, res) {
+        if (err) throw err;
+
+        console.table(res);
+
+        startNext();
+    })
+}
+
+function viewRole() {
+    connection.query("SELECT * FROM roles", function (err, res) {
+        if (err) throw err;
+
+        console.table(res);
+
+        startNext();
     })
 }
